@@ -51,13 +51,12 @@ async function updatePredictions() {
   };
 
   const outputMap = await sess.run(feeds);
-  //console.log(outputMap["40"].cpuData)
-  //const outputTensor = outputMap.values().next().value;
-  //const predictions = outputTensor.data;
+  let predictions = [];
   let maxPrediction = null;
   for (const key in outputMap) {
     if (outputMap[key].cpuData) {
-      maxPrediction = Math.max(...outputMap[key].cpuData);
+      predictions = outputMap[key].cpuData;
+      maxPrediction = Math.max(...predictions);
     }
   }
 
