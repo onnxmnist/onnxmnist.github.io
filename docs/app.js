@@ -54,8 +54,13 @@ async function updatePredictions() {
   //console.log(outputMap["40"].cpuData)
   //const outputTensor = outputMap.values().next().value;
   //const predictions = outputTensor.data;
-  const predictions = outputMap["40"].cpuData;
-  const maxPrediction = Math.max(...predictions);
+  let maxPrediction = null;
+  for (const key in outputMap) {
+    if (outputMap[key].cpuData) {
+      const predictions = outputMap["40"].cpuData;
+      maxPrediction = Math.max(...predictions);
+    }
+  }
 
   for (let i = 0; i < predictions.length; i++) {
     const element = document.getElementById(`prediction-${i}`);
