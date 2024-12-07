@@ -57,8 +57,7 @@ async function updatePredictions() {
   let maxPrediction = null;
   for (const key in outputMap) {
     if (outputMap[key].cpuData) {
-      const predictions = outputMap["40"].cpuData;
-      maxPrediction = Math.max(...predictions);
+      maxPrediction = Math.max(...outputMap[key].cpuData);
     }
   }
 
